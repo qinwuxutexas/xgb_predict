@@ -11,8 +11,8 @@ xgboost scores for all instances (rows of the csv file), one score for one row (
 
 Code flow chart:
 Build trees: read in the txt model file and construct it into a vector of multi-trees. Each element of the vector is the root note of a single binary-tree.
-Read feature data which is stored in csv file format.
-Compute xgboost score: loop through the rows of the feature data file, and compute a xgb score for each row (a vector of features).
+-> Read feature data which is stored in csv file format.
+-> Compute xgboost score: loop through the rows of the feature data file, and compute a xgb score for each row (a vector of features).
 
 Time complexity: n_tree x log(n_node) x n_instance
 Space complexity: n_tree x n_node x n_instance
