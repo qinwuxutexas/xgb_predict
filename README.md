@@ -1,9 +1,9 @@
 # xgboost model_predictor
 
-It is a forward formulation for predicting xgboost score given input of a feature vector. 
+It is a forward formulation for predicting xgboost score given inputs of a trained model file in .txt and a feature data file in .csv. 
 
 Inputs: 
-  1) tabular feature data in csv file (rows: instances, columns: feature data including header of feature names);
+  1) tabular feature data file in .csv format (rows: instances, columns: feature data including header of feature names);
   2) xgboost model file in .txt format which is generated from the Scikit-learn library of xgb.train ().
   
 Output:
