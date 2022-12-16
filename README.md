@@ -9,8 +9,8 @@ Inputs:
 Output:
 xgboost scores for all instances (rows of the csv file), one score for one row (a feature vector).
 
-C++ Code flow chart:
-Build trees: read in the txt model file and construct it into a list of multi-trees. Each element of the list is the root note of a single binary-tree.
+Code flow chart:
+Build trees: read in the txt model file and construct it into a vector of multi-trees. Each element of the vector is the root note of a single binary-tree.
 Read feature data which is stored in csv file format.
 Compute xgboost score: loop through the rows of the feature data file, and compute a xgb score for each row (a vector of features).
 
