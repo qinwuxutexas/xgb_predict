@@ -1,6 +1,13 @@
-# xgb_predict
-It is used to predict xgb score of binary classification problem. Given the trained tree information, it computes the probability of class 1
-The input decision tree follows the format from the genration of xgb.train of skit-learn library, Not the xgb.fit which (the later) instead computes the probability for both classes of 0 and 1
-Flow chart:
-class Tree: Read the decision tree information -> cached into a list of tree root nodes (each nodel represents the root of a tree)-> build into a full binary tree
-Class probability: caclulate the probability of each tree and accumulate for a single instance.
+# xgboost model_predictor
+It is a forward formulation and computation as used to predict xgb score. 
+Inputs: 1) tabular feature data in csv file;
+2) xgboost model file in .txt format which is produced by using Scikit-learn library.
+Output:
+xgboost score for each object (row of the csv file)
+
+Code flow chart:
+Build Trees: read in the model file and construct it into a list of multi-trees. Each element of the list is the root note of a single tree.
+Read feature data which is stored in csv file format.
+Compute Score: loop through the rows of the feature data file, and compute the xgb score for each instance of row.
+
+Time complexity: n_tree x log(n_node) X n_sample, n_tree: number of trees, n_node: node number of a single tree, n_sample: number of instances.
