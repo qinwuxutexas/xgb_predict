@@ -15,12 +15,14 @@ using namespace std;
 //tree node as a binary search  tree
 class Node {
 public:
+    //initilization for each node
     int left_id = -1;
     int right_id = -1;
     int missing_id = -1;
     string feature = "None";
     double fea_threshold = 0;
     double leaf_val = 0;
+    //tree node
     Node(int left_val, int right_val, int missing_val, string feature_, double fea_threshold_) {
         left_id = left_val;
         right_id = right_val;
@@ -28,13 +30,14 @@ public:
         fea_threshold = fea_threshold_;
         missing_id = missing_val;
     }
+    // leaf node
     Node(double leaf_val_) {
         leaf_val = leaf_val_;
         feature = "leaf";
     }
 };
 
-//build full tree
+//read in model file and build full trees into a vector, and store root of each tree in the vector
 class Tree {
 public:
     string xgb_model;
@@ -86,7 +89,7 @@ public:
     }
 };
 
-// read in feature data presented in csv
+// open feature data csv file and read in row by row
 vector <unordered_map <string, double>> read_table_input_data(string in_file)
 {
     const char* feature_data_file = in_file.c_str();
@@ -121,8 +124,10 @@ vector <unordered_map <string, double>> read_table_input_data(string in_file)
     return feature_values;
 }
 
+//xgb score predictor
 class xgb_predictor {
 public:
+    //compute score for each single tree
     double score_single_tree(unordered_map <int, Node>& single_tree, Node* root, unordered_map <string, string>& map_features, unordered_map <string, double>& features) {
         string feature = root->feature;
         if (feature == "leaf") {
@@ -144,7 +149,7 @@ public:
         }
 }
 
-// score the data using xgb model
+// compute the total score accumulated from every single tree
 double score(vector< unordered_map <int, Node>>& trees, unordered_map <string, string>& map_features, unordered_map <string, double>& features) {
     double xgb_score = 0.5;
     for (unordered_map <int, Node> single_tree: trees) {
