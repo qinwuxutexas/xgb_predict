@@ -10,7 +10,7 @@ Output:
 xgboost scores for all instances (rows of the csv file), one score for one row (a feature vector).
 
 Code flow chart:
-1) Build trees: a) read in the model txt file and construct it into a vector of multi-trees. b) built every single binary tree, and store it as an unordered_map as the element of the vector. The unordered_map includes the node IDs as key and the single-binary-tree roots as its value;
+1) Build trees: a) read in the model txt file and construct it into a vector of multi-trees. b) built every single binary tree, and store it as an unordered_map as the element of the vector. The unordered_map includes the node IDs as key and the binary-tree nodes as its value;
 2) Open feature data csv file and streaming row by row (one row is a vector of feature values).
 3) Compute xgboost score: loop through the rows of the feature data file, and accumulate the computation of a total xgb score from rows.
 
