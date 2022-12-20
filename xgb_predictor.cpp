@@ -37,7 +37,7 @@ public:
     }
 };
 
-//read in model file and build full trees into a vector, and store root of each tree in the vector
+//read in model file and build trees into a vector storing unordered_map (key: node ID, value: tree node)
 class Tree {
 public:
     string xgb_model;
