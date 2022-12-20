@@ -14,7 +14,6 @@ using namespace std;
 
 //tree node as a binary search  tree
 class Node {
-public:
     //initilization for each node
     int left_id = -1;
     int right_id = -1;
@@ -22,6 +21,7 @@ public:
     string feature = "None";
     double fea_threshold = 0;
     double leaf_val = 0;
+public:
     //tree node
     Node(int left_val, int right_val, int missing_val, string feature_, double fea_threshold_) {
         left_id = left_val;
